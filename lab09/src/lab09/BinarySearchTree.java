@@ -25,14 +25,11 @@ public class BinarySearchTree<T> {
 					left = new BinarySearchTree<T>(compare);
 				}
 				left.insert(item);
-			
 			}
 		}else{
 			this.item = item;
 		}
-		
 	}
-	
 	public T find(T item){
 		T returnItem = null; 
 		if(compare.compare(this.item, item) ==0){
