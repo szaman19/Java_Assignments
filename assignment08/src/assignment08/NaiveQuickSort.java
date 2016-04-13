@@ -48,7 +48,7 @@ public class NaiveQuickSort implements Sorter {
 		}
 		E e = list.get(0);
 
-		for(int i = 0; i < list.size();i++)
+		for(int i = 1; i < list.size();i++)
 		{
 			E comp = list.get(i);
 			if(comp.compareTo(e) >= 0){
@@ -100,17 +100,11 @@ public class NaiveQuickSort implements Sorter {
 			List <E> lower = less(list);
 			List <E> higher = gteq(list);
 			if(higher.size() >= 1){
-				lower.add(higher.get(0));
-				higher = higher.subList(1, higher.size());
 				returnVal.addAll(sort(lower));
 				returnVal.addAll(sort(higher));
 			}else{
 				returnVal.addAll(sort(lower));
 			}
-//			lower.add(higher.get(0));
-//			higher = higher.subList(1, higher.size());
-//			returnVal.addAll(sort(lower));
-//			returnVal.addAll(sort(higher));
 			return returnVal;
 		}
 		
