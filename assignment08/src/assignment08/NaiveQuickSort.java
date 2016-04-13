@@ -97,13 +97,22 @@ public class NaiveQuickSort implements Sorter {
 		}
 		else{
 			List <E> returnVal = new ArrayList<E>();
+			
 			List <E> lower = less(list);
 			List <E> higher = gteq(list);
+			
 			if(higher.size() >= 1){
+				
 				returnVal.addAll(sort(lower));
+				returnVal.add(list.get(0));
 				returnVal.addAll(sort(higher));
+				
 			}else{
+				
 				returnVal.addAll(sort(lower));
+				returnVal.add(list.get(0));
+				
+				
 			}
 			return returnVal;
 		}
@@ -128,17 +137,18 @@ public class NaiveQuickSort implements Sorter {
 		Random r = new Random();
 		ArrayList<Integer> lst = new ArrayList<Integer>();
 
-		for(int i = 0; i < 1000; i++)
+		for(int i = 0; i < 10; i++)
 			lst.add(r.nextInt(1000));
-//		System.out.println(lst);
+		System.out.println(lst);
 		System.out.println(sort(lst));
 
+		System.out.println("-----------------------------");
+		lst.clear();
+
 		for(int i = 0; i < 10000; i++)
-			lst.add(r.nextInt(10000));
-//		System.out.println(lst);
+			lst.add(r.nextInt(1000));
+		System.out.println(lst);
 		System.out.println(sort(lst));
-//		ArrayList<Integer> checkIfSorted = (ArrayList<Integer>) sort(lst);
-//		System.out.println(inOrder(checkIfSorted));
 	}
 
 
