@@ -1,3 +1,0 @@
-HALT
-DATA 
-a h 
