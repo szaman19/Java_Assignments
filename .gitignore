@@ -26,4 +26,5 @@ THUMBS.db
 
 .html
 .css
-
+.classpath
+.project
