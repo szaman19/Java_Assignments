@@ -13,6 +13,7 @@
 .rar
 .tar
 .zip
+.tar.gz
 
 # OS File #
 ###########
@@ -28,3 +29,8 @@ THUMBS.db
 .css
 .classpath
 .project
+
+# Temporary Embargo #
+#####################
+
+assembler
