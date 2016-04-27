@@ -65,6 +65,7 @@ public class Factorial {
 		int result = 0;
 		
 		while(test.isRunning()) {	
+//			System.out.println("0 => " + test.getData(0) + "; 1 => " + result);
 			if(result != test.getData(1)){
 				result = test.getData(1);
 				System.out.println("0 => " + test.getData(0) + "; 1 => " + result);

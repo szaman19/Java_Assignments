@@ -1,0 +1,4 @@
+#File locations
+#Fri Jul 31 19:41:16 EDT 2015
+ExecutableDirectory=C\:/Users/Harvey/workspace/assembler/TestPEXE/
+SourceDirectory=C\:/Users/Harvey/workspace/assembler/TestPASM/
