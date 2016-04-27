@@ -1,0 +1,22 @@
+# Compiled Source #
+###################
+*.class
+*.exe
+*.dll
+#.com
+
+# Packages #
+############
+
+.dmg
+.jar
+.rar
+.tar
+.zip
+
+# OS File #
+###########
+
+.DS_STORE
+.DS_STORE?
+THUMBS.db
