@@ -27,4 +27,7 @@ public class InstructionMap {
 			mnemonics.put(opcode.get(str), str);
 		}
 	}
+	public static void main(String[] args){
+		System.out.println(opcode.containsKey("JMPZ"));
+	}
 }
