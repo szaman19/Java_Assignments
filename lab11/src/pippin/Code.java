@@ -51,5 +51,16 @@ public class Code {
 		nextCodeIndex = 0;
 		code = new long[CODE_MAX];
 	}
+	// Back to the class Code. Add a method getText(int i) that returns a String. 
+	//If 0 <= i < nextCodeIndex, the return value is InstructionMap.mnemonics.get(getOpPart(i)) + a space + getArg(i). 
+	//Otherwise it is the empty String.
+	
+	public String getText(int i){
+		String returnVal = "";
+		if(i >= 0 && i < nextCodeIndex){
+			returnVal = InstructionMap.mnemonics.get(getOpPart(i)) + " " + getArg(i);
+		}
+		return returnVal;
+	}
 
 }

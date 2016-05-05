@@ -1,8 +1,6 @@
 package pippin;
 
-import java.util.Observable;
-
-public class MachineModel extends Observable{
+public class MachineModel {
 	private class CPU{
 		private int accum, pc;
 	}
@@ -350,7 +348,6 @@ public class MachineModel extends Observable{
 	public Code getCode(){
 		return code;
 	}
-	
 	public void setCode(Code code){
 		this.code = code;
 	}
@@ -377,10 +374,6 @@ public class MachineModel extends Observable{
 			halt();
 			throw e;
 		}
-	}
-	//Added in lab11
-	public int getChangedIndex(){
-		return memory.getChangedIndex();
 	}
 	
 }
