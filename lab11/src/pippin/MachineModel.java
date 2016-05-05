@@ -1,6 +1,8 @@
 package pippin;
 
-public class MachineModel {
+import java.util.Observable;
+
+public class MachineModel extends Observable{
 	private class CPU{
 		private int accum, pc;
 	}
@@ -374,6 +376,12 @@ public class MachineModel {
 			halt();
 			throw e;
 		}
+	}
+	//Lab11
+	//Change MachineModel to say it extends Observable (that is java.util.Observerable), Add a getter method for Code.
+	//Provide a delegate getter method for changedIndex from Memory.
+	public int getChangedIndex(){
+		return memory.getChangedIndex();
 	}
 	
 }

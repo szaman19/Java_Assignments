@@ -5,8 +5,12 @@ import java.util.Observer;
 import java.util.Properties;
 
 import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.io.File;
 
 public class MachineView extends Observable{
@@ -63,7 +67,9 @@ public class MachineView extends Observable{
 	public Code getCode(){
 		return model.getCode();
 	}
-	
+	public int getPC(){
+		return model.getPC();
+	}
 	public int getData(int i){
 		return model.getData(i);
 	}
@@ -75,6 +81,33 @@ public class MachineView extends Observable{
 		
 	}
 	public void createAndShowGUI(){
+		frame = new JFrame("Pippin Simulator");
+		codeViewPanel = new CodeViewPanel(this);
+		memoryViewPanel1 = new MemoryViewPanel(this, 0, 160);
+		memoryViewPanel2 = new MemoryViewPanel(this, 160, 240);
+		memoryViewPanel3 = new MemoryViewPanel(this, 240, Memory.DATA_SIZE);
+		cpuViewPanel = new CPUViewPanel(this);
+		controlPanel = new ControlPanel(this);
+		menuBarBuilder = new MenuBarBuilder(this);
+		
+		frame.add(codeViewPanel.createCodeDisplay(),BorderLayout.LINE_START);
+		JPanel center = new JPanel();
+		center.setLayout(new GridLayout(1,3));
+		frame.add(center,BorderLayout.CENTER);
+		center.add(memoryViewPanel1.createMemoryDisplay());
+		center.add(memoryViewPanel2.createMemoryDisplay());
+		center.add(memoryViewPanel3.createMemoryDisplay());
+		frame.add(cpuViewPanel.createCPUDisplay(),BorderLayout.PAGE_START);
+		frame.add(controlPanel.createControlDisplay(),BorderLayout.PAGE_END);
+		JMenuBar bar = new JMenuBar();
+		frame.setJMenuBar(bar);
+		bar.add(menuBarBuilder.createFileMenu());
+		bar.add(menuBarBuilder.createExecuteMenu());
+		
+		frame.setSize(1200,600);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		
 		
 	}
 	
@@ -95,11 +128,18 @@ public class MachineView extends Observable{
 			timer.setDelay(period);
 		}
 	}
-	public MachineView(boolean withGui){
-		model = new MachineModel(withGui);
+	public MachineView(MachineModel model){
+		this.model = model;
 		locateDefaultDirectory();
 		loadPropertiesFile();
 		createAndShowGUI();
+	}
+	public static void main(String[] args) {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new MachineView(new MachineModel(true)); 
+			}
+		});
 	}
 	
 
