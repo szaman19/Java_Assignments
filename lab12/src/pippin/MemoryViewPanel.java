@@ -41,6 +41,7 @@ The constructor has three parameters to set the fields machineView, lower and up
 		this.machineView = machineView;
 		this.lower = lower;
 		this.upper = upper;
+		machineView.addObserver(this);
 	}
 	
 	public JComponent createMemoryDisplay() {

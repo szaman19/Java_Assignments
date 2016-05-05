@@ -1,0 +1,5 @@
+#File locations
+#Thu May 05 02:05:31 EDT 2016
+DataDirectory=/Users/shehtabzaman/Documents/College Files/CS140/lab12/dat/
+ExecutableDirectory=/Users/shehtabzaman/Documents/College Files/CS140/lab12/pexe/
+SourceDirectory=/Users/shehtabzaman/Documents/College Files/CS140/lab12/pasm/
