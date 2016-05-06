@@ -43,9 +43,9 @@ changing all 4 occurrences of "load" to "data" and change machineView.loadFile t
 				KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 		load.addActionListener(e -> machineView.loadCode());
 		returnMenu.add(load);
-		data.setMnemonic(KeyEvent.VK_L);
+		data.setMnemonic(KeyEvent.VK_C);
 		data.setAccelerator(KeyStroke.getKeyStroke(
-				KeyEvent.VK_L, ActionEvent.CTRL_MASK));
+				KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 		data.addActionListener(e -> machineView.loadData());
 		returnMenu.add(data);
 		returnMenu.addSeparator(); // puts a line across the menu

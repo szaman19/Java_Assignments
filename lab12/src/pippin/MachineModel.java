@@ -197,7 +197,7 @@ public class MachineModel extends Observable{
 			cpu.pc++;			
 		};
 		//Future Instructions
-
+		//AND
 		INSTRUCTIONS[0x9] = (arg, flags)->{
 			flags = flags & 0x6;
 
@@ -222,7 +222,7 @@ public class MachineModel extends Observable{
 			}
 			cpu.pc++;
 		};
-
+		//NOT
 		INSTRUCTIONS[0xA] = (arg, flags) ->{
 			flags = flags & 0x6;
 			//Is in the case of NOP, all flags must be 0 to avoid an exception. 
@@ -286,6 +286,49 @@ public class MachineModel extends Observable{
 
 			}
 			cpu.pc++;
+		};
+		//FOR 
+		
+		INSTRUCTIONS [0xD] = (arg, flags) ->{
+			flags = flags & 0x6;
+			if(flags == 0){ //Direct Addressing
+				int N = memory.getData(arg);
+				int numInstructions = N / 0x1000;
+				int numIterations = N % 0x1000;
+				int forPC = cpu.pc;
+				
+				if(numInstructions >0 && numIterations >0){
+					for(int i = 0; i < numIterations; i++){
+						cpu.pc = forPC + 1;
+						for(int k = 0; k < numInstructions; k++){
+							step();
+						}
+					}
+				}
+				
+			}else if(flags == 2){ //Immediate Addressing
+				int N = arg;
+				int numInstructions = N / 0x1000;
+				int numIterations = N % 0x1000;
+				int forPC = cpu.pc;
+				
+				if(numInstructions >0 && numIterations >0){
+					for(int i = 0; i < numIterations; i++){
+						cpu.pc = forPC + 1;
+						for(int k = 0; k < numInstructions; k++){
+							step();
+						}
+					}
+				}
+			}
+			else{
+				String fString = "(" + (flags %8 > 3?"1":"0")+
+						(flags %4 > 1?"1":"0")+")";
+				throw new IllegalInstructionException(
+						"Illegal flags for this instruction: " + fString);
+
+			}
+			
 		};
 
 		//INSTRUCTION_MAP entry for "HALT"

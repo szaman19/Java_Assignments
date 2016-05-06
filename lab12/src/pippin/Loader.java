@@ -20,7 +20,7 @@ public class Loader {
 			} catch (ArrayIndexOutOfBoundsException e) {
 				return("Code array Index " + e.getMessage());
 			} catch (NoSuchElementException e) {
-				return("NoSuchElementException");
+				return("NoSuchElementException pexe");
 			} catch (FileNotFoundException e1) {
 				return("File " + program.getName() + " Not Found");
 			}
@@ -31,8 +31,8 @@ public class Loader {
 				while(input.hasNextLine()){
 					String line = input.nextLine();
 					Scanner parser = new Scanner(line);
-					int addr = parser.nextInt();
-					int arg = parser.nextInt();
+					int addr = parser.nextInt(16);
+					int arg = parser.nextInt(16);
 					model.setData(addr, arg);
 					parser.close();
 				}return "success";
@@ -41,7 +41,7 @@ public class Loader {
 			}catch (ArrayIndexOutOfBoundsException e) {
 				return("Code array Index " + e.getMessage());
 			} catch (NoSuchElementException e) {
-				return("NoSuchElementException");
+				return("NoSuchElementException data");
 			} catch (FileNotFoundException e1) {
 				return("File " + program.getName() + " Not Found");
 			}

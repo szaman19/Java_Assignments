@@ -19,8 +19,9 @@ public class InstructionMap {
 		opcode.put("DIV",0x8 );
 		opcode.put("AND",0x9 );
 		opcode.put("NOT",0xA );
-		opcode.put("CMPL",0xB );
-		opcode.put("CMPZ",0xC );
+		opcode.put("CMPL",0xB);
+		opcode.put("CMPZ",0xC);
+		opcode.put("FOR", 0xD);
 		opcode.put("HALT",0xF );
 		
 		//Lab 11
