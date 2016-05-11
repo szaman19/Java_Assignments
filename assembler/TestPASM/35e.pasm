@@ -1,3 +1,0 @@
-NOP
-DATA 
-FF 
