@@ -63,33 +63,24 @@ public class Assembler {
 		ArrayList<String> outputCode = new ArrayList<String>();
 		for(int i = 0; i < inputText.size() && retVal ==0;i++){
 			String[] parts = inputText.get(i).split("\\s+");
-			//			if(parts.length > 2){
-			//				error.append("Error on line " + (i+1) + ": illegal number of arguments");
-			//			}else{
-			//				if(parts.length == 1){
-			//					if(!noArgument.contains(parts[0].toUpperCase())){
-			//						error.append("Error on line " + (i+1)+": illegal mnemonic");
-			//					}
-			//					
-			//				}else{
-			//					if(!InstructionMap.opcode.containsKey(parts[0].toUpperCase())){
-			//						error.append("Error on line " + (i+1)+": illegal mnemonic");
-			//					}else{
-			//						if(parts[0] != parts[0].toUpperCase()){
-			//							error.append("Error on line "+ (i +1) + ": mnemonic must be upper case");
-			//						}
-			//					}
-			//				}
-			//			}
 
 			if(! InstructionMap.opcode.containsKey(parts[0].toUpperCase())){
+				
+				retVal = i+1;
 				error.append("Error on line " + (i+1)+": illegal mnemonic");
 				System.out.println(parts[0].length());
 				System.out.println(InstructionMap.opcode.containsKey(parts[0].toUpperCase()));
-			}else if( parts[0].toUpperCase() != parts[0]){
+				
+			}
+			
+			else if(parts[0].toUpperCase() != parts[0]){
+				retVal = i +1;
 				error.append("Error on line "+ (i +1) + ": mnemonic must be upper case");
-			}else if(noArgument.contains(parts[0].toUpperCase())){
+				
+			}
+			else if(noArgument.contains(parts[0])){
 				if(parts.length > 1){
+					retVal = i+1;
 					error.append("Error on line "+(i+1)+ ": this mnemonic cannot take arguments");
 				}else{
 					int opPart = 8 * InstructionMap.opcode.get(parts[0]);
@@ -98,10 +89,14 @@ public class Assembler {
 				}
 			}else{
 				if(parts.length > 2){
+					retVal = i +1;
 					error.append("Error on line "+ (i+1)+": this mnemonic has too many arguments");
-				}else if (parts.length == 1){
+				}
+				else if (parts.length == 1){
+					retVal = i +1;
 					error.append("Error on line "+ (i+1)+": this mnemonic is missing arguments");
-				}else{
+				}
+				else{
 					//						int arg = Integer.parseInt(parts[1],16);
 					int flags = 0;
 					char temp = parts[1].charAt(0);
@@ -121,10 +116,14 @@ public class Assembler {
 						opPart += Instruction.numOnes(opPart) % 2;
 						outputCode.add(Integer.toString(opPart,16) + " "+ Integer.toString(arg,16));
 					}catch(NumberFormatException e){
+						retVal = i +1;
 						error.append("Error on line " + (i+1) + ": argument is not a hex number");
 					}
 				}
 			}
+		}
+		if(retVal != 0){
+			return retVal;
 		}
 
 		if(retVal == 0){

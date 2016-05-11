@@ -427,4 +427,8 @@ public class MachineModel extends Observable{
 		return memory.getChangedIndex();
 	}
 	
+	//assignment11
+	public void setPC(int pc){
+		cpu.pc = pc;
+	}
 }

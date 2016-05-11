@@ -1017,5 +1017,9 @@ public class InstructionTester {
 
 	// HALT is missing at this point
 	
-	
+	@Test
+	//Test for 
+	public void testFORDirect(){
+		
+	}
 }
