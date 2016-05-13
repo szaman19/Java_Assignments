@@ -1,5 +1,5 @@
 #File locations
-#Thu May 12 14:41:11 EDT 2016
+#Fri May 13 14:15:33 EDT 2016
 DataDirectory=/Users/shehtabzaman/Documents/College Files/CS140/assignment11/dat/
-ExecutableDirectory=/Users/shehtabzaman/Documents/College Files/CS140/assignment11/pexe/
+ExecutableDirectory=/Users/shehtabzaman/Documents/College Files/CS140/assignment11/pasm/
 SourceDirectory=/Users/shehtabzaman/Documents/College Files/CS140/assignment11/pasm/
